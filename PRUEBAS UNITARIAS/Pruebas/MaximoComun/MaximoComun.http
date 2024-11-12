@@ -1,0 +1,6 @@
+@MaximoComun_HostAddress = http://localhost:5287
+
+GET {{MaximoComun_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

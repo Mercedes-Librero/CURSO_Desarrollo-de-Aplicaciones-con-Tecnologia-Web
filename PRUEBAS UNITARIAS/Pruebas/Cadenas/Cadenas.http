@@ -1,0 +1,6 @@
+@Cadenas_HostAddress = http://localhost:5082
+
+GET {{Cadenas_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

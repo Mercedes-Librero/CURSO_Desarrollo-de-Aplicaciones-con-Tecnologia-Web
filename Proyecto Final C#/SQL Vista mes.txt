@@ -1,0 +1,52 @@
+CREATE VIEW ProximosConciertos
+AS
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY Conciertos.Fecha) AS Id,
+    Conciertos.Fecha, 
+    Giras.Nombre AS Gira, 
+    Ciudades.Nombre AS Ciudad, 
+    Grupos.Nombre AS Grupo
+FROM 
+    Conciertos
+    LEFT JOIN Giras ON Conciertos.GirasId = Giras.Id
+    INNER JOIN Ciudades ON Conciertos.CiudadesId = Ciudades.Id
+    INNER JOIN Grupos ON Giras.GruposId = Grupos.Id
+WHERE 
+    Conciertos.Fecha >= GETDATE() 
+    AND Conciertos.Fecha <= DATEADD(day, 30, GETDATE());
+
+
+
+
+        // GET: ConciertosMes
+        public async Task<IActionResult> ConciertosMes()
+        {
+            var listaConciertos = await repositorioConciertos.DameTodos();
+
+            var fechaInicio = DateOnly.FromDateTime(DateTime.Now);
+            var fechaFin = DateOnly.FromDateTime(DateTime.Now.AddDays(30));
+
+            var conciertosMes = listaConciertos
+                .Where(item => item.Fecha >= fechaInicio && item.Fecha <= fechaFin)
+                .Select(item => new Conciertos
+                {
+                    Id = item.Id,
+                    Fecha = item.Fecha,
+                    Ciudades = item.Ciudades,
+                    Giras = item.Giras
+                })
+                .ToList();
+
+            foreach (var concierto in conciertosMes)
+            {
+                concierto.Ciudades = await repositorioCiudades.DameUno(concierto.CiudadesId);
+                concierto.Giras = await repositorioGiras.DameUno(concierto.GirasId);
+            }
+
+            return View(conciertosMes);
+        }
+
+
+ dotnet ef dbcontext scaffold "server=musicagrupos.database.windows.net;database=GrupoB;user=as;password=P0t@t0P0t@t0"Microsoft.EntityFrameworkCore.SqlServer -o Models dotnet clean -t ProximosConciertos
+
+ dotnet build
