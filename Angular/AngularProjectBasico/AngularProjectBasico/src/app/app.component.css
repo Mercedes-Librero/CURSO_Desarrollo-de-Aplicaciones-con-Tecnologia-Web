@@ -1,0 +1,19 @@
+button {
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+body {
+  font-weight: bold;
+  color: red
+}
+
+#hola {
+  color: pink;
+  border-color: green
+}
+
+#adios {
+  color: green;
+  border-color: pink
+}

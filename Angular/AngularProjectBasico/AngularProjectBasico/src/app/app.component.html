@@ -1,0 +1,29 @@
+<p>
+  <input type="text" id="entrada1" name="entrada1" [(ngModel)]="numero1" />
+  <input type="text" id="entrada2" name="entrada2" [(ngModel)]="numero2" />
+</p>
+
+<button id="hola" (click)="operacion='+'"> Suma </button>
+<button id="adios" (click)="operacion='-'"> Resta </button>
+  El resultado es : {{ dameResultado() }}
+
+<br />
+<br />
+<br />
+
+<p> <input type="text" id="texto" name="texto" [(ngModel)]="texto" /> </p>
+<p> <input type="text" id="textoGuion" name="textoGuion" [(ngModel)]="textoGuion" /> </p>
+
+<br />
+<br />
+<br />
+
+El resultado es: {{darVuelta()}}
+
+<br />
+<br />
+<br />
+
+El resultado es: {{dameLongitud()}}
+
+El resultado es: {{dameGuiones()}}

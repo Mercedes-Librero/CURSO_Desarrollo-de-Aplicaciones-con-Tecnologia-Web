@@ -1,0 +1,31 @@
+
+<main class="main">
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <p>
+      <label for="nombre1">Nombre 1</label>
+      <input type="text" id="nombre1" name="nombre1" formControlName="nombre1">
+    </p>
+
+    <p>
+      <label for="nombre2">Nombre 2</label>
+      <input type="text" id="nombre2" name="nombre2" formControlName="nombre2">
+    </p>
+
+    <p>
+      <label for="resultado">Resultado</label>
+      <input type="text" id="resultado" name="resultado" formControlName="resultado">
+    </p>
+
+
+
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+
+  </form>
+
+</main>
+
+<router-outlet />
