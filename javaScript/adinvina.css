@@ -1,0 +1,29 @@
+.color{
+    background-color: aqua;
+    height: auto;
+}
+
+.color2{
+    background-color: burlywood;
+    height: auto;
+}
+
+.borde div{
+    outline-color: chocolate;
+    outline-width: 1px;
+    outline-style: solid;
+}
+
+#etiquetaEdad{
+    margin: 10px;
+    height: 50px;
+    background-color: black;
+}
+
+.listAltura{
+    height: 100px;
+}
+
+#listaNom li {
+    display: block;
+}
